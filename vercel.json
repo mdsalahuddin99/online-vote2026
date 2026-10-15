@@ -1,0 +1,13 @@
+{
+  "regions": ["sin1"],
+  "rewrites": [
+    {
+      "source": "/bulksmsbd-proxy/:path*",
+      "destination": "http://bulksmsbd.net/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

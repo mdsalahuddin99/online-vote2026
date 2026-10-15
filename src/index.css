@@ -1,0 +1,910 @@
+/* ==============================================================================
+   মডেল মসজিদ ইমাম পরিষদ - প্রিমিয়াম প্রফেশনাল ডিজাইন সিস্টেম
+   Crafted with bespoke Islamic Emerald elegance, bespoke micro-interactions & polished UX
+   ============================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --font-bangla: 'Hind Siliguri', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+
+  /* প্রিমিয়াম ব্র্যান্ড প্যালেট (Handpicked Bespoke Palette) */
+  --emerald-950: #022c22;
+  --emerald-900: #064e3b;
+  --emerald-800: #065f46;
+  --emerald-700: #047857;
+  --emerald-600: #059669;
+  --emerald-500: #10b981;
+  --emerald-100: #d1fae5;
+  --emerald-50:  #ecfdf5;
+
+  --amber-600: #d97706;
+  --amber-500: #f59e0b;
+  --amber-400: #fbbf24;
+  --amber-100: #fef3c7;
+  --amber-50:  #fffbeb;
+
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748b;
+  --slate-400: #94a3b8;
+  --slate-200: #e2e8f0;
+  --slate-100: #f1f5f9;
+  --slate-50:  #f8fafc;
+
+  /* সিম্যান্টিক ম্যাপ */
+  --bg-app: #f4f6f9;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f8fafc;
+  --border-color: #e2e8f0;
+  --border-focus: #059669;
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+
+  /* ম্যাপড স্ট্যান্ডার্ড ভ্যারিয়েবল (ভোট ভিউ ও সকল উপাদানের জন্য) */
+  --primary: #059669;
+  --primary-hover: #047857;
+  --primary-dark: #064e3b;
+  --primary-light: #10b981;
+  --primary-subtle: #ecfdf5;
+  --primary-border: #a7f3d0;
+
+  --gold: #d97706;
+  --gold-dark: #92400e;
+  --gold-light: #fef3c7;
+
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+
+  --danger: #dc2626;
+  --danger-light: #fef2f2;
+  --danger-border: #fecaca;
+
+  --success: #059669;
+  --success-light: #ecfdf5;
+  --success-border: #a7f3d0;
+
+  /* রেডিয়াস ও সফট শ্যাডো (iOS & Airbnb Grade) */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+  --shadow-elevated: 0 12px 30px -4px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+  --shadow-button: 0 4px 14px rgba(5, 150, 105, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-bangla);
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(5, 150, 105, 0.03) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(217, 119, 6, 0.03) 0px, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* বেসিক কন্টেইনার */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-wrapper {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  width: 100%;
+  flex: 1;
+}
+
+/* টাইপোগ্রাফি - সুনির্দিষ্ট ও বড় হেডলাইন স্কেল */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: var(--slate-900);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 1.65rem;
+  font-weight: 800;
+}
+
+h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+/* কাস্টম প্রিমিয়াম ইনপুট ও ড্রপডাউন */
+input, select, textarea {
+  font-family: var(--font-bangla);
+  border: 1.5px solid var(--border-color);
+  background: #ffffff;
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  width: 100%;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+input:hover, select:hover, textarea:hover {
+  border-color: #cbd5e1;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--emerald-600);
+  box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.12);
+  background: #ffffff;
+}
+
+select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23475569'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  background-size: 1.15rem;
+  padding-right: 2.5rem;
+}
+
+/* বাটন ও ইন্টারেক্টিভ এলিমেন্ট - ক্লিকে বা হোভারে কোনোভাবেই হাইড বা ব্যাকগ্রাউন্ডে মিশবে না */
+button {
+  font-family: var(--font-bangla);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+button:focus-visible, .btn:focus-visible {
+  outline: 3px solid #10b981;
+  outline-offset: 2px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.35rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  min-height: 48px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* প্রাইমারি বাটন */
+.btn-primary {
+  background: linear-gradient(135deg, var(--emerald-600) 0%, var(--emerald-800) 100%) !important;
+  color: #ffffff !important;
+  border: 1.5px solid #047857 !important;
+  box-shadow: var(--shadow-button);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--emerald-700) 0%, var(--emerald-900) 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active:not(:disabled) {
+  background: #064e3b !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3) !important;
+  transform: scale(0.98);
+}
+
+/* সেকেন্ডারি বাটন */
+.btn-secondary {
+  background: #ffffff !important;
+  color: #1e293b !important;
+  border: 2px solid #cbd5e1 !important;
+  box-shadow: var(--shadow-subtle);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #f8fafc !important;
+  border-color: #94a3b8 !important;
+  color: #0f172a !important;
+}
+
+.btn-secondary:active:not(:disabled) {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+  border-color: #64748b !important;
+  transform: scale(0.98);
+}
+
+/* আউটলাইন বাটন */
+.btn-outline {
+  background: #ffffff !important;
+  color: var(--emerald-800) !important;
+  border: 2px solid var(--emerald-600) !important;
+}
+
+.btn-outline:hover:not(:disabled) {
+  background: var(--emerald-50) !important;
+  color: var(--emerald-900) !important;
+  border-color: var(--emerald-700) !important;
+}
+
+.btn-outline:active:not(:disabled) {
+  background: var(--emerald-100) !important;
+  color: var(--emerald-950) !important;
+  transform: scale(0.98);
+}
+
+/* ডেঞ্জার বাটন */
+.btn-danger {
+  background: #dc2626 !important;
+  color: #ffffff !important;
+  border: 1.5px solid #b91c1c !important;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: #b91c1c !important;
+}
+
+.btn-danger:active:not(:disabled) {
+  background: #991b1b !important;
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.55 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* প্রার্থী নির্বাচন কার্ডের স্টাইল */
+.candidate-card {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  position: relative;
+}
+
+.candidate-card:hover {
+  border-color: #10b981 !important;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.15);
+  transform: translateY(-1px);
+}
+
+.candidate-card:active {
+  transform: scale(0.99);
+}
+
+/* কাস্টম কার্ড ডিজাইন (বর্ডার ও সফট শ্যাডো) */
+.card {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: var(--shadow-card);
+  padding: 1.5rem;
+  transition: all 0.25s ease;
+}
+
+.card:hover {
+  border-color: #cbd5e1;
+}
+
+/* ব্যাজ স্টাইল */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.badge-primary {
+  background: var(--emerald-50);
+  color: var(--emerald-800);
+  border: 1px solid rgba(5, 150, 105, 0.2);
+}
+
+.badge-gold {
+  background: var(--amber-50);
+  color: #92400e;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.badge-success {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+.badge-danger {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+/* হিরো ইসলামিক গ্রিন ব্যানার (Rich Bespoke Feel) */
+.hero-gradient {
+  background: linear-gradient(135deg, #022c22 0%, #064e3b 50%, #047857 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px -5px rgba(6, 78, 59, 0.3);
+}
+
+.hero-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: 
+    radial-gradient(circle at 100% 0%, rgba(251, 191, 36, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 0% 100%, rgba(16, 185, 129, 0.1) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* অ্যানিমেশন */
+@keyframes fadeInSlide {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+.animate-fade-in {
+  animation: fadeInSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==============================================================================
+   মোবাইল ডিভাইস অপটিমাইজেশন: টেক্সট ও কার্ড সাইজ সংক্ষেপণ (Compact Mobile Cards & Typography)
+   ============================================================================== */
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding: 0.5rem 0.5rem !important;
+  }
+
+  /* সমস্ত কার্ডের প্যাডিং ও সাইজ কমানো */
+  .card {
+    padding: 0.85rem 0.85rem !important;
+    border-radius: 12px !important;
+  }
+
+  /* হেডলাইন ও টাইপোগ্রাফি স্কেল ডাউন */
+  h1 {
+    font-size: 1.35rem !important;
+    line-height: 1.3 !important;
+  }
+  h2 {
+    font-size: 1.2rem !important;
+    line-height: 1.3 !important;
+  }
+  h3 {
+    font-size: 1.1rem !important;
+    line-height: 1.3 !important;
+  }
+  h4 {
+    font-size: 0.98rem !important;
+    line-height: 1.3 !important;
+  }
+  p {
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* ফর্ম বা সিঙ্গেল কার্ডের প্রধান বাটন ফুল উইডথ হবে */
+  form > .btn,
+  .btn-block {
+    width: 100%;
+  }
+
+  /* ১. ভোটিং টপ স্টিপার বার (Stepper) আরও কমপ্যাক্ট */
+  .voting-stepper-box {
+    padding: 0.65rem 0.75rem !important;
+    margin-bottom: 1rem !important;
+    border-radius: 12px !important;
+  }
+  .voting-step-circle {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 0.85rem !important;
+  }
+  .voting-step-circle svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  .voting-step-label {
+    font-size: 0.72rem !important;
+    margin-top: 0.25rem !important;
+    line-height: 1.1 !important;
+  }
+  .voting-step-connector {
+    margin: 0 -5px 1.1rem !important;
+    height: 3px !important;
+  }
+
+  /* ২. ভোটার ভেরিফিকেশন ও হিরো কার্ড */
+  .voting-hero-card {
+    padding: 1.25rem 1rem !important;
+    border-radius: 14px !important;
+  }
+  .voting-hero-icon {
+    width: 48px !important;
+    height: 48px !important;
+    margin-bottom: 0.75rem !important;
+  }
+  .voting-hero-icon svg {
+    width: 26px !important;
+    height: 26px !important;
+  }
+  .voting-form-card {
+    padding: 1rem 0.85rem !important;
+    border-radius: 12px !important;
+  }
+  .voting-form-card label {
+    font-size: 1rem !important;
+    margin-bottom: 0.45rem !important;
+  }
+  .voter-input-lg {
+    height: 48px !important;
+    font-size: 1.05rem !important;
+    padding-left: 2.75rem !important;
+  }
+  .otp-input-field {
+    height: 52px !important;
+    font-size: 1.6rem !important;
+    letter-spacing: 10px !important;
+  }
+
+  /* ৩. ব্যালট পেপারের পদের কার্ড ও ক্যান্ডিডেট কার্ড (মূল সাইজ কমানো) */
+  .ballot-voter-card {
+    padding: 0.85rem 1rem !important;
+    border-radius: 12px !important;
+  }
+  .ballot-progress-card {
+    padding: 0.65rem 0.85rem !important;
+    border-radius: 10px !important;
+    font-size: 0.9rem !important;
+  }
+  .post-section-card {
+    padding: 0.85rem 0.85rem !important;
+    border-radius: 12px !important;
+    margin-bottom: 0.85rem !important;
+  }
+  .post-section-header {
+    padding-bottom: 0.65rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  .post-number-badge {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.9rem !important;
+  }
+  .post-section-title {
+    font-size: 1.15rem !important;
+  }
+
+  /* ক্যান্ডিডেট কার্ডসমূহ (কমপ্যাক্ট ও দ্রুত নির্বাচনযোগ্য) */
+  .candidate-card {
+    padding: 0.65rem 0.85rem !important;
+    border-radius: 10px !important;
+    gap: 0.65rem !important;
+  }
+  .candidate-card-name {
+    font-size: 1.05rem !important;
+    margin-bottom: 0.15rem !important;
+    line-height: 1.25 !important;
+  }
+  .candidate-card-meta {
+    font-size: 0.82rem !important;
+    line-height: 1.25 !important;
+  }
+  .candidate-card-radio {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .candidate-card-radio svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  /* ৪. ব্যালট রিভিউ ও চূড়ান্ত কনফার্ম কার্ড */
+  .voting-review-card {
+    padding: 0.85rem !important;
+  }
+  .voting-review-item {
+    padding: 0.75rem 0.85rem !important;
+    border-radius: 10px !important;
+  }
+  .voting-review-item .review-cand-name {
+    font-size: 1.05rem !important;
+  }
+
+  /* ৫. ফলাফল পেজ কার্ড ও টেক্সট সাইজ কমানো */
+  .results-candidates-grid {
+    gap: 0.6rem !important;
+  }
+  .results-candidate-card {
+    padding: 0.65rem 0.6rem !important;
+    border-radius: 10px !important;
+  }
+  .results-candidate-card h4 {
+    font-size: 0.92rem !important;
+    margin: 0.2rem 0 !important;
+  }
+  .results-candidate-card p {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+  .results-candidate-card strong {
+    font-size: 1rem !important;
+  }
+
+  /* বাটন সাইজ কমানো */
+  .btn {
+    min-height: 42px !important;
+    padding: 0.55rem 1rem !important;
+    font-size: 0.95rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-wrapper {
+    padding: 0.4rem 0.35rem !important;
+  }
+  .card {
+    padding: 0.75rem 0.7rem !important;
+  }
+  .candidate-card {
+    padding: 0.55rem 0.75rem !important;
+  }
+  .candidate-card-name {
+    font-size: 0.98rem !important;
+  }
+  .candidate-card-meta {
+    font-size: 0.78rem !important;
+  }
+  .candidate-card-radio {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  .candidate-card-radio svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+  .post-section-title {
+    font-size: 1.05rem !important;
+  }
+  .voting-step-label {
+    font-size: 0.65rem !important;
+  }
+  .voting-step-circle {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* অ্যাডমিন প্যানেল মোবাইল স্পেসিফিক রেসপন্সিভ ডিজাইন */
+@media (max-width: 768px) {
+  .admin-header-compact {
+    padding: 0.65rem 0.85rem !important;
+    gap: 0.5rem !important;
+  }
+
+  .admin-btn-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
+  }
+
+  .admin-btn-grid > button,
+  .admin-btn-grid > div {
+    width: 100% !important;
+    justify-content: center !important;
+    font-size: 0.8rem !important;
+    padding: 0.5rem 0.5rem !important;
+  }
+
+  .admin-filter-container {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .admin-filter-item {
+    width: 100% !important;
+  }
+
+  .admin-scroll-table {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    border-radius: 8px !important;
+  }
+
+  .admin-stat-card-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ==============================================================================
+   ভোটার রশিদ এক্সক্লুসিভ প্রিন্ট স্টাইল (Print Only Voter Receipt)
+   ============================================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm 15mm;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* পুরো ওয়েবসাইটের সকল বাইরের এলিমেন্ট প্রিন্ট থেকে বাদ */
+  nav,
+  .navbar,
+  footer,
+  .footer,
+  .hide-on-print,
+  button,
+  .btn,
+  .voting-screen-success-header,
+  .voting-screen-actions,
+  .app-container > nav,
+  .app-container > footer {
+    display: none !important;
+  }
+
+  /* শুধুমাত্র ভোটার রশিদের প্রিন্ট কন্টেইনার দৃশ্যমান রাখা */
+  body * {
+    visibility: hidden;
+  }
+
+  #voter-receipt-printable,
+  #voter-receipt-printable * {
+    visibility: visible !important;
+  }
+
+  #voter-receipt-printable {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 24px 28px !important;
+    background: #ffffff !important;
+    border: 2px solid #064e3b !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
+    box-sizing: border-box !important;
+    page-break-inside: avoid !important;
+  }
+
+  .print-only-block {
+    display: block !important;
+    visibility: visible !important;
+  }
+}
+
+@media screen {
+  .print-only-block {
+    display: none !important;
+  }
+}
+
+/* ==============================================================================
+   ফলাফল পৃষ্ঠা রেসপনসিভ গ্রিড (মোবাইলে ২টি, বড় স্ক্রিনে ৪টি)
+   ============================================================================== */
+.results-candidates-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.15rem;
+}
+
+@media (max-width: 1100px) {
+  .results-candidates-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .results-candidates-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .results-candidates-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+}
+
+.results-candidate-card {
+  display: flex;
+  flex-direction: column;
+  justifyContent: space-between;
+  padding: 1rem;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.results-candidate-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.results-candidate-card.is-winner {
+  background: linear-gradient(180deg, #ecfdf5 0%, #ffffff 100%);
+  border: 2px solid #059669;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.15);
+}
+
+/* ==============================================================================
+   প্রার্থী তালিকা ফিল্টার ট্যাব (মোবাইলে প্রিমিয়াম স্ক্রলযোগ্য ও রেসপনসিভ)
+   ============================================================================== */
+.candidate-filter-container {
+  position: relative;
+  width: 100%;
+  margin: 0.25rem 0 0.5rem;
+}
+
+.candidate-filter-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 0.35rem 0.25rem 0.65rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.candidate-filter-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.candidate-tab-pill {
+  flex: 0 0 auto !important; /* মোবাইলে কখনো সঙ্কুচিত বা টেক্সট কেটে যাবে না */
+  flex-shrink: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.15rem;
+  min-height: 42px;
+  border-radius: 9999px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  color: #334155;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+  user-select: none;
+}
+
+.candidate-tab-pill:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+  color: #0f172a;
+  transform: translateY(-1px);
+}
+
+.candidate-tab-pill:active {
+  transform: scale(0.97);
+}
+
+.candidate-tab-pill.is-active {
+  background: linear-gradient(135deg, #059669 0%, #064e3b 100%) !important;
+  border-color: #047857 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35) !important;
+}
+
+.candidate-tab-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  background: #f1f5f9;
+  color: #64748b;
+  transition: all 0.2s ease;
+}
+
+.candidate-tab-pill.is-active .candidate-tab-badge {
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+}
+
+/* ডেস্কটপে সব ট্যাব যাতে সুন্দরভাবে র‍্যাপ হয় */
+@media (min-width: 1024px) {
+  .candidate-filter-tabs {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+}
+
+/* মোবাইলে প্রিমিয়াম লুক ও স্ক্রল ফেইড */
+@media (max-width: 768px) {
+  .candidate-filter-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 28px;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(to right, transparent, rgba(248, 250, 252, 0.95));
+  }
+  .candidate-tab-pill {
+    padding: 0.48rem 0.95rem;
+    font-size: 0.88rem;
+    min-height: 38px;
+  }
+}
+
+
